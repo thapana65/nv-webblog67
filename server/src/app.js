@@ -1,7 +1,7 @@
 let express = require('express')
 let bodyParser = require('body-parser')
 
-var user_details = require('../path/user_details.json')
+var user_details = require('../json/user_details.json')
 
 const app = express()
 
@@ -24,12 +24,12 @@ app.get('/users', function (req, res) {
 })
 
 app.get('/users/:user_id', function (req, res) {
-    res.send('Say hello with ' + req.params.user_id)
+    res.send(`ID : ${req.params.user_id}`)
 })
 
 // create user
 app.post('/user/', function (req, res) {
-    res.send(JSON.stringify(req.body/*.username*/))
+    res.send(`Create Account : ${JSON.stringify(req.body/*.username*/)}`)
 })
 
 let port = 8081
