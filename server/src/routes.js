@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.put('/users/:userId', UserController.put)
 
     // delete user
-    app.delete('/users/:userId', UserController.delete)
+    app.delete('/users/:userId', UserController.remove)
 
     // get user by id
     app.get('/users/:userId', UserController.show)
