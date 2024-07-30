@@ -16,7 +16,7 @@ module.exports = {
     // create user
     async create (req, res) {
         try {
-            const users = await User.create(req.body)
+            const user = await User.create(req.body)
             res.send(user.toJSON())
         } catch (err) {
             res.status(500).send({
@@ -33,6 +33,9 @@ module.exports = {
                     id: req.params.userId
                 }
             })
+            res.status(500).send({
+                success: 'Active'
+            })
             res.send(req.body)
         } catch (err) {
             res.status(500).send({
@@ -44,7 +47,7 @@ module.exports = {
     // delete user
     async remove (req, res) {
         try {
-            const user = await User.findOne({
+            const user = await User.findOne ({
                 where: {
                     id: req.params.userId
                 }
@@ -52,11 +55,11 @@ module.exports = {
 
             if(!user) {
                 return res.status(403).send({
-                    error: 'The user information was incorrect.'
+                    error: 'User not found.'
                 })
             }
             
-            await user.destory()
+            await user.destroy()
             res.send(user)
         } catch (err) {
             res.status(500).send({

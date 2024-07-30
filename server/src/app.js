@@ -11,6 +11,20 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 require('./routes')(app);
 
+/* *** ----------------------------------------- *** */
+app.get('/status', function (req, res) {
+    res.send('Hello nodejs server')
+})
+
+app.get('/welcome/:person', function(req, res) {
+    res.send('Say hello with - ' + req.params.person)
+})
+
+app.post('welcome', function(req, res) {
+    res.send('OK you post - ' + req.body.name)
+})
+/* *** ----------------------------------------- *** */
+
 // Localhost Port
 let port = process.env.PORT || config.port
 
